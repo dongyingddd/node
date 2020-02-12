@@ -12,8 +12,11 @@ const server = http.createServer(function (req, res) {
         res.setHeader('content-type', 'text/css;charset=utf-8');
         let cssStr = fs.readFileSync('style.css', 'utf8');
         res.end(cssStr);
-    }
-    else {
+    } else if (req.url === '/6.png') {
+        res.setHeader('content-type', 'image/png');
+        let pngStr = fs.readFileSync('6.png');
+        res.end(pngStr);
+    } else {
         res.end('404');
     }
 });
