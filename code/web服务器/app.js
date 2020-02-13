@@ -18,22 +18,33 @@ let server = http.createServer((req, res) => {
     let filepath = path.join(__dirname, STATIC_PATH, req.url);
     //console.log(filepath);
 
+    //集中设置content-type映射关系
+    const TYPE_MAP = {
+        '.html': 'text/html;charset=utf-8',
+        '.css': 'text/css;charset=utf-8',
+        '.js': 'application/javascript',
+        '.png': 'image/png'
+    }
     try {
         //读出来,并返回
         let rs = fs.readFileSync(filepath);
         //分别设置响应头content-type
         //获取文件扩展名
         let extname = path.extname(req.url);
-        if (extname === '.html') {
-            res.setHeader('content-type', 'text/html;charset=utf-8');
-        } else if (extname === '.css') {
-            res.setHeader('content-type', 'text/css;charset=utf-8');
-        } else if (extname === '.js') {
-            res.setHeader('content-type', 'application/javascript');
-        } else if (extname === '.png') {
-            res.setHeader('content-type', 'image/png');
+
+        if (TYPE_MAP[extname]) {
+            res.setHeader('content-type', TYPE_MAP[extname]);
         }
-        console.log(extname);
+
+        // if (extname === '.html') {
+        //     res.setHeader('content-type', 'text/html;charset=utf-8');
+        // } else if (extname === '.css') {
+        //     res.setHeader('content-type', 'text/css;charset=utf-8');
+        // } else if (extname === '.js') {
+        //     res.setHeader('content-type', 'application/javascript');
+        // } else if (extname === '.png') {
+        //     res.setHeader('content-type', 'image/png');
+        // }
 
         res.end(rs);
     } catch (err) {
