@@ -24,5 +24,5 @@ const server = http.createServer((req, res) => {
 
 //启动端口监听
 server.listen(8084, () => {
-    console.log("亲爱的,您的服务器在8084端口启动.....");
+    console.log("大人,您的服务器在8084端口启动.....");
 });
