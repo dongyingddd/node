@@ -11,14 +11,30 @@ const fs = require('fs');
 
 //假设目标是要读出当前文件夹在的01.js的内容
 //异步格式
-fs.readFile('01.js', 'utf-8', (err, data) => {
-    if (err) {
-        throw err
-    }
-    console.log(data);
+// fs.readFile('01.js', 'utf-8', (err, data) => {
+//     if (err) {
+//         throw err
+//     }
+//     console.log(data);
 
-});
+// });
 
 //同步格式
 // const jsHtml = fs.readFileSync('01.js', 'utf8');
 // console.log(jsHtml);
+
+//2.2 文件写入
+//覆盖写入
+// fs.writeFile('./a.txt', '中华人民共和国', 'utf-8', err => {
+//     if (err) {
+//         console.log(err);
+//         throw err;
+//     }
+// });
+
+fs.appendFile('./a.txt', ',为天地立命', 'utf8', err => {
+    if (err) {
+        console.log(err);
+        throw err;
+    }
+});
