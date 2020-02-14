@@ -32,9 +32,9 @@ const fs = require('fs');
 //     }
 // });
 
-fs.appendFile('./a.txt', ',为天地立命', 'utf8', err => {
-    if (err) {
-        console.log(err);
-        throw err;
-    }
-});
+// fs.appendFile('./a.txt', ',为天地立命', 'utf8', err => {
+//     if (err) {
+//         console.log(err);
+//         throw err;
+//     }
+// });
